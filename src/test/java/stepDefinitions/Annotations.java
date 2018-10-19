@@ -15,7 +15,7 @@ public class Annotations {
 
     @Given("^Iam on Facebook Login Page$")
     public void iamOnFacebookLoginPage() {
-        System.setProperty("webdriver.gecko.driver","E:\\softwares\\geckodriver-v0.23.0-win64\\geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver","E:\\softwares\\Info Tech\\geckodriver-v0.23.0-win64\\geckodriver.exe");
 
         driver = new FirefoxDriver();
         driver.navigate().to("https://www.facebook.com/");
@@ -37,5 +37,12 @@ public class Annotations {
     @Then("^Login Should Pass$")
     public void loginShouldPass()  {
         driver.findElement(By.id("userNavigationLabel")).isDisplayed();
+    }
+
+    @Then("^Logout Should Pass$")
+    public void logoutOfFacebook()  {
+        driver.findElement(By.id("userNavigationLabel")).click();
+        driver.findElement(By.linkText("/device-based/regular/logout/")).click();
+        driver.findElement(By.id("loginbutton")).isDisplayed();
     }
 }
